@@ -18,11 +18,11 @@ export class CursoService {
   public verExperiencia(id: number): Observable<Curso> {
     return this.httpClient.get<Curso>(this.url + `ver/${id}`);
   }
-  public crear(experiencia: Curso): Observable<any> {
-    return this.httpClient.post<any>(this.url + 'crear', experiencia);
+  public crear(curso: Curso): Observable<any> {
+    return this.httpClient.post<any>(this.url + 'crear', curso);
   }
-  public editar(experiencia: Curso): Observable<any> {
-    return this.httpClient.put<any>(this.url + 'editar', experiencia);
+  public editar(id: number, curso: Curso): Observable<any> {
+    return this.httpClient.put<any>(this.url + `editar/${id}`, curso);
   }
   public borrar(id: number): Observable<any> {
     return this.httpClient.delete<any>(this.url + `borrar/${id}`);

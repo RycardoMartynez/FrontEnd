@@ -10,6 +10,7 @@ import { ExperienciaService } from 'src/app/service/Experiencia/experiencia.serv
 export class ExpComponent implements OnInit {
 
     expe: Experiencia[]=[];
+    tarjetasEnEdicion: number[] = []; // Array de identificadores de tarjetas en modo de edición
     
     constructor(private expeServi: ExperienciaService){}
     
@@ -21,5 +22,32 @@ export class ExpComponent implements OnInit {
         this.expeServi.lista().subscribe(data=>{this.expe=data;}); 
     }
 
-
+    editarTarjeta(tarjetaId: number): void {
+        if (!this.tarjetaEnEdicion(tarjetaId)) {
+          this.tarjetasEnEdicion.push(tarjetaId); // Agrega el identificador de la tarjeta al array de edición
+        }
+      }
+    
+      cancelarEdicion(tarjetaId: number): void {
+        const index = this.tarjetasEnEdicion.indexOf(tarjetaId);
+        if (index !== -1) {
+          this.tarjetasEnEdicion.splice(index, 1); // Elimina el identificador de la tarjeta del array de edición
+        }
+      }
+    
+      guardarCambios(experiencia: Experiencia): void {
+        this.expeServi.editar(experiencia.id, experiencia).subscribe(
+          () => {
+            console.log('Cambios guardados exitosamente');
+            this.cancelarEdicion(experiencia.id); // Cancela la edición de la tarjeta después de guardar los cambios
+          },
+          (error) => {
+            console.error('Error al guardar los cambios', error);
+          }
+        );
+      }
+    
+      tarjetaEnEdicion(tarjetaId: number): boolean {
+        return this.tarjetasEnEdicion.includes(tarjetaId);
+      }
 }

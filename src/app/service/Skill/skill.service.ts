@@ -22,8 +22,8 @@ export class SkillService {
   public crear(skill: Skill): Observable<any> {
     return this.httpClient.post<any>(this.url + 'crear', skill);
   }
-  public editar(skill: Skill): Observable<any> {
-    return this.httpClient.put<any>(this.url + 'editar', skill);
+  public editar(id: number, skill: Skill): Observable<any> {
+    return this.httpClient.put<any>(this.url + `editar/${id}`, skill);
   }
   public borrar(id: number): Observable<any> {
     return this.httpClient.delete<any>(this.url + `borrar/${id}`);
