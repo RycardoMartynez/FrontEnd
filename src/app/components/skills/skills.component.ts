@@ -11,7 +11,8 @@ export class SkillsComponent implements OnInit {
 
     skill: Skill[]=[]
     tarjetasEnEdicion: number[] = []; // Array de identificadores de tarjetas en modo de edición
-
+    nuevoSkill: Skill = new Skill(0, '',0);
+    mostrarForm: boolean = false;
 
     constructor(private skillServi: SkillService){}
     
@@ -50,6 +51,47 @@ export class SkillsComponent implements OnInit {
       tarjetaEnEdicion(tarjetaId: number): boolean {
         return this.tarjetasEnEdicion.includes(tarjetaId);
       }
+      mostrarFormulario(): void {
+        this.mostrarForm = true;
+     }
+  
+     cancelarAgregar(): void {
+      this.mostrarForm = false;
+      
+      if (this.nuevoSkill.id === 0 && this.nuevoSkill.nombreS === '' && this.nuevoSkill.porcentaje === 0) {
+        this.nuevoSkill = new Skill(0, '', 0);
+      }
+    }
+    crearSkill(): void {
+      this.skillServi.crear(this.nuevoSkill).subscribe(
+        () => {
+          console.log('Skill creado exitosamente');
+          this.nuevoSkill = new Skill(0, '', 0); // Limpiar los campos del formulario después de la creación exitosa
+          this.cargarSkill(); // Volver a cargar la lista de experiencias actualizada
+          
+          
+        },
+        (error) => {
+         
+          console.error('Error al crear la experiencia', error);
+          
+        }
+      );
+}
+        eliminarSkill(id: number): void {
+          if (confirm('¿Estás seguro de eliminar esta experiencia?')) {
+            this.skillServi.borrar(id).subscribe(
+              () => {
+                console.log('Skill eliminado exitosamente');
+                this.cargarSkill(); // Vuelve a cargar la lista de experiencias después de eliminar una
+                
+              },
+              (error) => {
+                console.error('Error al eliminar la experiencia', error);
+              }
+            );
+          }
+        }
 
 
 }

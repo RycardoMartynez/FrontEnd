@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/Entidades/Experiencia/experiencia';
 import { ExperienciaService } from 'src/app/service/Experiencia/experiencia.service';
 
@@ -11,16 +12,41 @@ export class ExpComponent implements OnInit {
 
     expe: Experiencia[]=[];
     tarjetasEnEdicion: number[] = []; // Array de identificadores de tarjetas en modo de edición
-    
+    nuevaExperiencia: Experiencia = new Experiencia(0, '', '', '', '', '', '');
+    mostrarForm: boolean = false;
+
+
+
     constructor(private expeServi: ExperienciaService){}
+
     
     ngOnInit(): void {
         this.cargarExperiencia();
     }
 
-    cargarExperiencia(): void{
-        this.expeServi.lista().subscribe(data=>{this.expe=data;}); 
+    cargarExperiencia(): void {
+      this.expeServi.lista().subscribe({
+        next: (data) => {
+          this.expe = data;
+        },
+        error: (error) => {
+          console.error('Error al cargar las experiencias', error);
+        }
+      });
     }
+    mostrarFormulario(): void {
+      this.mostrarForm = true;
+   }
+
+   cancelarAgregar(): void {
+    this.mostrarForm = false;
+    
+    if (this.nuevaExperiencia.id === 0 && this.nuevaExperiencia.nombreE === '' && this.nuevaExperiencia.imgE === '' &&
+        this.nuevaExperiencia.descripcionE === '' && this.nuevaExperiencia.puestoE === '' && this.nuevaExperiencia.tareasE === '' &&
+        this.nuevaExperiencia.fechaE === '') {
+      this.nuevaExperiencia = new Experiencia(0, '', '', '', '', '', '');
+    }
+  }
 
     editarTarjeta(tarjetaId: number): void {
         if (!this.tarjetaEnEdicion(tarjetaId)) {
@@ -50,4 +76,34 @@ export class ExpComponent implements OnInit {
       tarjetaEnEdicion(tarjetaId: number): boolean {
         return this.tarjetasEnEdicion.includes(tarjetaId);
       }
+      crearExperiencia(): void {
+        this.expeServi.crear(this.nuevaExperiencia).subscribe(
+          () => {
+            console.log('Experiencia creada exitosamente');
+            this.nuevaExperiencia = new Experiencia(0, '', '', '', '', '', ''); // Limpiar los campos del formulario después de la creación exitosa
+            this.cargarExperiencia(); // Volver a cargar la lista de experiencias actualizada
+            
+            
+          },
+          (error) => {
+           
+            console.error('Error al crear la experiencia', error);
+            
+          }
+        );
+}
+          eliminarExperiencia(id: number): void {
+            if (confirm('¿Estás seguro de eliminar esta experiencia?')) {
+              this.expeServi.borrar(id).subscribe(
+                () => {
+                  console.log('Experiencia eliminada exitosamente');
+                  this.cargarExperiencia(); // Vuelve a cargar la lista de experiencias después de eliminar una
+                  
+                },
+                (error) => {
+                  console.error('Error al eliminar la experiencia', error);
+                }
+              );
+            }
+          }
 }

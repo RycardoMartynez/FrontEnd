@@ -7,6 +7,7 @@ import { Experiencia } from 'src/app/model/Entidades/Experiencia/experiencia';
   providedIn: 'root'
 })
 export class ExperienciaService {
+  
 
   url = 'http://localhost:8080/experiencia/'
 

@@ -10,12 +10,29 @@ import { CursoService } from 'src/app/service/Curso/curso.service';
 export class EduComponent implements OnInit {
   cur: Curso[] = [];
   tarjetasEnEdicion: number[] = []; // Array de identificadores de tarjetas en modo de edición
+  nuevoCurso: Curso = new Curso(0, '', '', '', '', '', '');
+  mostrarForm: boolean = false;
 
   constructor(private curServi: CursoService) {}
 
   ngOnInit(): void {
     this.cargarCurso();
   }
+
+  mostrarFormulario(): void {
+    this.mostrarForm = true;
+ }
+
+ cancelarAgregar(): void {
+  this.mostrarForm = false;
+  
+  if (this.nuevoCurso.id === 0 && this.nuevoCurso.nombreC === '' && this.nuevoCurso.imgC === '' &&
+      this.nuevoCurso.descripcionC === '' && this.nuevoCurso.tituloC === '' && this.nuevoCurso.conocimientosC === '' &&
+      this.nuevoCurso.fechaC === '') {
+    this.nuevoCurso = new Curso(0, '', '', '', '', '', '');
+  }
+}
+
 
   cargarCurso(): void {
     this.curServi.lista().subscribe(data => {this.cur = data;});
@@ -49,4 +66,36 @@ export class EduComponent implements OnInit {
   tarjetaEnEdicion(cursoId: number): boolean {
     return this.tarjetasEnEdicion.includes(cursoId);
   }
+  crearCurso(): void {
+    this.curServi.crear(this.nuevoCurso).subscribe(
+      () => {
+        console.log('Curso creado exitosamente');
+        this.nuevoCurso = new Curso(0, '', '', '', '', '', ''); // Limpiar los campos del formulario después de la creación exitosa
+        this.cargarCurso(); // Volver a cargar la lista de experiencias actualizada
+        
+        
+      },
+      (error) => {
+       
+        console.error('Error al crear la experiencia', error);
+        
+      }
+    );
+}
+      eliminarCurso(id: number): void {
+        if (confirm('¿Estás seguro de eliminar esta experiencia?')) {
+          this.curServi.borrar(id).subscribe(
+            () => {
+              console.log('Experiencia eliminada exitosamente');
+              this.cargarCurso(); // Vuelve a cargar la lista de experiencias después de eliminar una
+              
+            },
+            (error) => {
+              console.error('Error al eliminar la experiencia', error);
+            }
+          );
+        }
+      }
+
+
 }
