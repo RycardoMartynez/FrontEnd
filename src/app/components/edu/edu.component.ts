@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/model/Entidades/Curso/curso';
 import { CursoService } from 'src/app/service/Curso/curso.service';
+import { UsuarioService } from 'src/app/service/Usuario/usuario.service';
 
 @Component({
   selector: 'app-edu',
@@ -12,11 +13,14 @@ export class EduComponent implements OnInit {
   tarjetasEnEdicion: number[] = []; // Array de identificadores de tarjetas en modo de edición
   nuevoCurso: Curso = new Curso(0, '', '', '', '', '', '');
   mostrarForm: boolean = false;
+  loginIN: boolean = false;
 
-  constructor(private curServi: CursoService) {}
+  constructor(private curServi: CursoService, private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
     this.cargarCurso();
+    this.loginIN = this.usuarioService.isLoggedIn(); // Obtener el estado de inicio de sesión al cargar el componente
+
   }
 
   mostrarFormulario(): void {

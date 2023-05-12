@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Skill } from 'src/app/model/Entidades/Skill/skill';
 import { SkillService } from 'src/app/service/Skill/skill.service';
+import { UsuarioService } from 'src/app/service/Usuario/usuario.service';
 
 @Component({
   selector: 'app-skills',
@@ -13,11 +14,14 @@ export class SkillsComponent implements OnInit {
     tarjetasEnEdicion: number[] = []; // Array de identificadores de tarjetas en modo de edición
     nuevoSkill: Skill = new Skill(0, '',0);
     mostrarForm: boolean = false;
+    loginIN: boolean = false;
 
-    constructor(private skillServi: SkillService){}
+    constructor(private skillServi: SkillService,  private usuarioService: UsuarioService){}
     
     ngOnInit(): void {
         this.cargarSkill();
+        this.loginIN = this.usuarioService.isLoggedIn(); // Obtener el estado de inicio de sesión al cargar el componente
+
     }
 
     cargarSkill(): void{

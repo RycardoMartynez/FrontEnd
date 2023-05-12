@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from 'src/app/model/Entidades/Proyecto/proyecto';
 import { ProyectoService } from 'src/app/service/Proyecto/proyecto.service';
+import { UsuarioService } from 'src/app/service/Usuario/usuario.service';
 
 @Component({
   selector: 'app-proyects',
@@ -13,12 +14,15 @@ export class ProyectsComponent implements OnInit {
     tarjetasEnEdicion: number[] = []; // Array de identificadores de tarjetas en modo de edición
     nuevoProyecto: Proyecto = new Proyecto(0, '','','','','');
     mostrarForm: boolean = false;
+    loginIN: boolean = false;
 
 
-    constructor(private proyeServi:ProyectoService){}
+    constructor(private proyeServi:ProyectoService, private usuarioService: UsuarioService){}
     
     ngOnInit(): void {
         this.cargarProyecto();
+        this.loginIN = this.usuarioService.isLoggedIn(); // Obtener el estado de inicio de sesión al cargar el componente
+
     }
 
     cargarProyecto(): void{
@@ -84,6 +88,7 @@ export class ProyectsComponent implements OnInit {
           if (confirm('¿Estás seguro de eliminar esta experiencia?')) {
             this.proyeServi.borrar(id).subscribe(
               () => {
+                
                 console.log('Skill eliminado exitosamente');
                 this.cargarProyecto(); // Vuelve a cargar la lista de experiencias después de eliminar una
                 

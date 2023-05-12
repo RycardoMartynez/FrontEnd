@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/model/Entidades/Persona/persona';
 import { PersonaService } from 'src/app/service/Persona/persona.service';
+import { UsuarioService } from 'src/app/service/Usuario/usuario.service';
 
 
 @Component({
@@ -11,21 +12,27 @@ import { PersonaService } from 'src/app/service/Persona/persona.service';
 export class AcercaDeComponent implements OnInit {
   persona: Persona=new Persona(0, '', '', '', '');
   modoEdicion: boolean = false;
+  loginIN: boolean = false;
 
-  constructor(private personaService: PersonaService) { }
+  constructor(private personaService: PersonaService, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.personaService.verPersona(1).subscribe(persona => {
       this.persona = persona;
       this.modoEdicion = false;
     });
+    
+    this.loginIN = this.usuarioService.isLoggedIn(); // Obtener el estado de inicio de sesión al cargar el componente
   }
+
   activarEdicion(): void {
     this.modoEdicion = true;
   }
+
   desactivarEdicion(): void {
     this.modoEdicion = false;
   }
+  
   guardarCambios(): void {
     this.personaService.editar(this.persona).subscribe(
       () => {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/Entidades/Experiencia/experiencia';
 import { ExperienciaService } from 'src/app/service/Experiencia/experiencia.service';
+import { UsuarioService } from 'src/app/service/Usuario/usuario.service';
 
 @Component({
   selector: 'app-exp',
@@ -14,14 +15,17 @@ export class ExpComponent implements OnInit {
     tarjetasEnEdicion: number[] = []; // Array de identificadores de tarjetas en modo de edición
     nuevaExperiencia: Experiencia = new Experiencia(0, '', '', '', '', '', '');
     mostrarForm: boolean = false;
+    loginIN: boolean = false;
 
 
 
-    constructor(private expeServi: ExperienciaService){}
+    constructor(private expeServi: ExperienciaService, private usuarioService: UsuarioService){}
 
     
     ngOnInit(): void {
         this.cargarExperiencia();
+        this.loginIN = this.usuarioService.isLoggedIn(); // Obtener el estado de inicio de sesión al cargar el componente
+
     }
 
     cargarExperiencia(): void {
