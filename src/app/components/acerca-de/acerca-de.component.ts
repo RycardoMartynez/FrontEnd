@@ -38,6 +38,7 @@ export class AcercaDeComponent implements OnInit {
       () => {
         console.log('Datos de la persona actualizados correctamente');
         this.modoEdicion = false; // Desactivar el modo de edición después de guardar los cambios
+        window.location.reload();
       },
       (error) => {
         console.error('Error al actualizar los datos de la persona', error);
