@@ -12,7 +12,7 @@ export class SkillsComponent implements OnInit {
 
     skill: Skill[]=[]
     tarjetasEnEdicion: number[] = []; // Array de identificadores de tarjetas en modo de edición
-    nuevoSkill: Skill = new Skill(0, '',0);
+    nuevoSkill: Skill = new Skill(0, '',0,'');
     mostrarForm: boolean = false;
     loginIN: boolean = false;
 
@@ -63,14 +63,14 @@ export class SkillsComponent implements OnInit {
       this.mostrarForm = false;
       
       if (this.nuevoSkill.id === 0 && this.nuevoSkill.nombreS === '' && this.nuevoSkill.porcentaje === 0) {
-        this.nuevoSkill = new Skill(0, '', 0);
+        this.nuevoSkill = new Skill(0, '', 0,'');
       }
     }
     crearSkill(): void {
       this.skillServi.crear(this.nuevoSkill).subscribe(
         () => {
           console.log('Skill creado exitosamente');
-          this.nuevoSkill = new Skill(0, '', 0); // Limpiar los campos del formulario después de la creación exitosa
+          this.nuevoSkill = new Skill(0, '', 0,''); // Limpiar los campos del formulario después de la creación exitosa
           this.cargarSkill(); // Volver a cargar la lista de experiencias actualizada
           
           

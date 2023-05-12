@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/service/Usuario/usuario.service';
 })
 export class HeaderComponent implements OnInit {
 
-  persona: Persona = new Persona(0, '', '', '', '');
+  persona: Persona = new Persona(0, '', '', '', '','','');
   loginIN: boolean = false;
   nombreU: string = "";
   contrasena: string = "";

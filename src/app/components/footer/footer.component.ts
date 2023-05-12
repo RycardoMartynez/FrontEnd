@@ -9,7 +9,7 @@ import { PersonaService } from 'src/app/service/Persona/persona.service';
 })
 export class FooterComponent implements OnInit {
 
-  persona: Persona=new Persona(0, '', '', '', '');
+  persona: Persona=new Persona(0, '', '', '', '','','');
   
 
   constructor(private persoService: PersonaService) { }

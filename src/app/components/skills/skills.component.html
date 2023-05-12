@@ -24,7 +24,7 @@
      
           <form (submit)="crearSkill()">
                 <div class="form-group">
-                  <label for="nombre"><b>Nombre: </b></label>
+                  <label for="nombre"><b>Skill: </b></label>
                   <input type="text" class="form-control" id="nombre" [(ngModel)]="nuevoSkill.nombreS" name="nombre" required>
                 </div>
                 <div class="form-group">
@@ -81,7 +81,7 @@
         <div *ngIf="tarjetaEnEdicion(ski.id)">
           <!-- Formulario para editar los datos -->
           <div class="form-group">
-            <label for="nombre"><b>Nombre: </b></label>
+            <label for="nombre"><b>Skill: </b></label>
             <input [(ngModel)]="ski.nombreS" name="nombre" id="nombre" type="text" class="form-control">
           </div>
           <div class="form-group">

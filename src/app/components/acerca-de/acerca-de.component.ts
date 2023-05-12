@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/service/Usuario/usuario.service';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-  persona: Persona=new Persona(0, '', '', '', '');
+  persona: Persona=new Persona(0, '', '', '', '','','');
   modoEdicion: boolean = false;
   loginIN: boolean = false;
 

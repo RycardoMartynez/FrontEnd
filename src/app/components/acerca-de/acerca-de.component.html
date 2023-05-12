@@ -24,11 +24,25 @@
               <label for="apellido"><b>Apellido: </b></label>
               <input [(ngModel)]="persona.apellido" name="apellido" id="apellido" type="text" class="form-control text-center">
             </div>
+            
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="form-group col-md-4">
+             <label for="titulo"><b>Titulo: </b></label>
+             <input [(ngModel)]="persona.titulo" name="titulo" id="titulo" type="text" class="form-control text-center">
+            </div>
           </div>
           <div class="row d-flex justify-content-center">
             <div class="form-group col-md-8 ">
-              <label for="img"><b>Imagen URL:</b></label>
+              <label for="img"><b>Imagen Perfil URL:</b></label>
               <input [(ngModel)]="persona.img" name="img" id="img" type="text" class="form-control text-center">
+            </div>
+
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="form-group col-md-8 ">
+              <label for="banner"><b>Banner URL:</b></label>
+              <input [(ngModel)]="persona.banner" name="banner" id="banner" type="text" class="form-control text-center">
             </div>
           </div>
       
@@ -55,18 +69,14 @@
                                  
             <img src="{{persona.img}}" class="img-fluid rounded-5 " style="width: 175px;height: 175px;" alt="perfil">
             <h2 style="margin-top: 10px ;">{{persona.nombre}}  {{persona.apellido}}</h2>
-            <h5 style="margin-top: 10px ;">Programador Web Full Stack</h5>
+            <h5 style="margin-top: 10px ;">{{persona.titulo}}</h5>
             
           </div>
           
           <div class="col-md-8 presentacion">
             
-            <p>{{persona.descripcion}}</p>
+            <p [innerHTML]="persona.descripcion"></p>
 
-            <p>Experiencia en el desarrollo de aplicaciones web desde cero, desde la conceptualización y el diseño hasta el desarrollo y la implementación. También tengo experiencia en la resolución de problemas y en la optimización de la funcionalidad y el rendimiento de las aplicaciones.</p> 
-          
-            <p>Me considero un apasionado por la tecnología y siempre estoy dispuesto a aprender y desarrollar mis habilidades. Estoy emocionado de aplicar mis conocimientos y habilidades en un equipo dinámico y en proyectos desafiantes.</p>
-          
           </div>
 
       </div>
