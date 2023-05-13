@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageScrollService } from 'ngx-page-scroll-core';
 import { Persona } from 'src/app/model/Entidades/Persona/persona';
 import { PersonaService } from 'src/app/service/Persona/persona.service';
 import { UsuarioService } from 'src/app/service/Usuario/usuario.service';
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
   contrasena: string = "";
   mostrarForm: boolean = false;
 
-  constructor(private persoService: PersonaService, private usuarioService: UsuarioService,) { }
+  constructor(private persoService: PersonaService, private usuarioService: UsuarioService, private pageScrollService: PageScrollService) { }
 
   ngOnInit(): void {
     this.persoService.verPersona(1).subscribe(persona => {
@@ -62,4 +63,13 @@ export class HeaderComponent implements OnInit {
  cerrarFormulario(): void {
   this.mostrarForm = false;
 }
+scrollToSection(sectionId: string, event: Event) {
+  event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+  this.pageScrollService.scroll({
+    document: document,
+    scrollTarget: `#${sectionId}`,
+  });
+}
+
+
 }

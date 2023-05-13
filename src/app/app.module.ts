@@ -15,6 +15,8 @@ import {HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { NgxPageScrollCoreModule, PageScrollService } from 'ngx-page-scroll-core';
+import { FloatingButtonComponent } from './components/floating-button/floating-button/floating-button.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     LoginComponent,
+    FloatingButtonComponent,
+    
     
   ],
   imports: [
@@ -36,10 +40,11 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     NgCircleProgressModule.forRoot({}),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPageScrollCoreModule
     
   ],
-  providers: [],
+  providers: [PageScrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
