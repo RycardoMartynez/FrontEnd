@@ -2,15 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Persona } from 'src/app/model/Entidades/Persona/persona';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonaService {
 
-  url = 'https://backendram3.onrender.com/persona/'
+  
+  url: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { 
+    if (environment.production) {
+      this.url = 'https://backendram3.onrender.com/persona/';
+    } else {
+      this.url = 'http://localhost:8080/persona/';
+    }
+  }
 
   public lista(): Observable<Persona[]> {
     return this.httpClient.get<Persona[]>(this.url + 'lista');

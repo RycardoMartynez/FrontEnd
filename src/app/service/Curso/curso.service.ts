@@ -2,15 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Curso } from 'src/app/model/Entidades/Curso/curso';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CursoService {
 
-  url = 'https://backendram3.onrender.com/curso/'
+  
+  url: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    if (environment.production) {
+      this.url = 'https://backendram3.onrender.com/curso/';
+    } else {
+      this.url = 'http://localhost:8080/curso/';
+    }
+   }
 
   public lista(): Observable<Curso[]> {
     return this.httpClient.get<Curso[]>(this.url + 'lista');

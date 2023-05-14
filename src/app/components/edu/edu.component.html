@@ -25,21 +25,21 @@
                   <label for="nombre"><b>Nombre: </b></label>
                   <input type="text" class="form-control" id="nombre" [(ngModel)]="nuevoCurso.nombreC" name="nombre" required>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="img"><b>Imagen URL: </b></label>
                   <input type="text" class="form-control" id="img" [(ngModel)]="nuevoCurso.imgC" name="img">
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label for="descripcion"><b>Descripcion: </b></label>
                   <textarea class="form-control" id="descripcion" [(ngModel)]="nuevoCurso.descripcionC" name="descripcion" rows="5" required></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="puesto"><b>Puesto: </b></label>
-                  <input type="text" class="form-control" id="puesto" [(ngModel)]="nuevoCurso.tituloC" name="puesto">
+                  <label for="titulo"><b>Titulo: </b></label>
+                  <input type="text" class="form-control" id="titulo" [(ngModel)]="nuevoCurso.tituloC" name="titulo">
                 </div>
                 <div class="form-group">
-                  <label for="tareas"><b>Tareas: </b></label>
-                  <textarea class="form-control" id="tareas" [(ngModel)]="nuevoCurso.conocimientosC" name="tareas" rows="5"></textarea>
+                  <label for="conocimientos"><b>Conocimientos: </b></label>
+                  <textarea class="form-control" id="conocimiento" [(ngModel)]="nuevoCurso.conocimientosC" name="conocimiento" rows="5"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="fecha"><b>Fecha: </b></label>
@@ -59,7 +59,7 @@
 
 <div class="container">
   <div class="row d-flex justify-content-center align-items-center align-items-stretch">
-    <div class="col-md-4" *ngFor="let curso of cur">
+    <div class="col-md-4" *ngFor="let curso of cur.reverse()">
       <div class="card text-center h-100">
         <div class="card-header">
           <button *ngIf="!tarjetaEnEdicion(curso.id) && loginIN" (click)="editarTarjeta(curso.id)" class="btn btn-dark">

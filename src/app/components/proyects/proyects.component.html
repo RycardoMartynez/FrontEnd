@@ -63,7 +63,7 @@
 
 <div class="conteiner">
   <div class="row row-cols-1 row-cols-md-3 g-4 d-flex justify-content-center align-items-center align-items-stretch">
-    <div class="col text-center" *ngFor="let proye of proyecto">
+    <div class="col text-center" *ngFor="let proye of proyecto.reverse()">
       <div class="card text-center h-100">
         <button *ngIf="!tarjetaEnEdicion(proye.id) && loginIN" (click)="editarTarjeta(proye.id)" class="btn btn-dark">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 20 20">

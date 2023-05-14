@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Proyecto } from 'src/app/model/Entidades/Proyecto/proyecto';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,16 @@ import { Proyecto } from 'src/app/model/Entidades/Proyecto/proyecto';
 export class ProyectoService {
 
   
-  url = 'https://backendram3.onrender.com/proyecto/'
+  
+  url: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { 
+    if (environment.production) {
+      this.url = 'https://backendram3.onrender.com/proyecto/';
+    } else {
+      this.url = 'http://localhost:8080/proyecto/';
+    }
+  }
 
   public lista(): Observable<Proyecto[]> {
     return this.httpClient.get<Proyecto[]>(this.url + 'lista');
