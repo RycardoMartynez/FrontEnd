@@ -8,7 +8,7 @@ import { Usuario } from 'src/app/model/Entidades/Usuario/usuario';
 })
 export class UsuarioService {
 
-  url = 'http://localhost:8080/usuario/';
+  url = 'https://backendram3.onrender.com/usuario/';
  
   loggedInKey = 'loggedIn'; // Clave para almacenar el estado de inicio de sesión en el almacenamiento local
 

@@ -8,7 +8,7 @@ import { Curso } from 'src/app/model/Entidades/Curso/curso';
 })
 export class CursoService {
 
-  url = 'http://localhost:8080/curso/'
+  url = 'https://backendram3.onrender.com/curso/'
 
   constructor(private httpClient: HttpClient) { }
 

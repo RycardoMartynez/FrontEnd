@@ -9,7 +9,7 @@ import { Skill } from 'src/app/model/Entidades/Skill/skill';
 export class SkillService {
 
 
-  url = 'http://localhost:8080/skill/'
+  url = 'https://backendram3.onrender.com/skill/'
 
   constructor(private httpClient: HttpClient) { }
 
