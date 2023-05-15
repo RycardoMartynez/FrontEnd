@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Proyecto } from 'src/app/model/Entidades/Proyecto/proyecto';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +10,11 @@ export class ProyectoService {
 
   
   
-  url: string;
+  // url='https://backendram3.onrender.com/proyecto/'
+  url='http://localhost:8080/proyecto/'
 
   constructor(private httpClient: HttpClient) { 
-    if (environment.production) {
-      this.url = 'https://backendram3.onrender.com/proyecto/';
-    } else {
-      this.url = 'http://localhost:8080/proyecto/';
-    }
+
   }
 
   public lista(): Observable<Proyecto[]> {

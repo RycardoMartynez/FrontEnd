@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Persona } from 'src/app/model/Entidades/Persona/persona';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +9,10 @@ import { environment } from 'src/environments/environment';
 export class PersonaService {
 
   
-  url: string;
+  url='http://localhost:8080/persona/'
+  // url='https://backendram3.onrender.com/skill/'
 
-  constructor(private httpClient: HttpClient) { 
-    if (environment.production) {
-      this.url = 'https://backendram3.onrender.com/persona/';
-    } else {
-      this.url = 'http://localhost:8080/persona/';
-    }
-  }
+  constructor(private httpClient: HttpClient) {}
 
   public lista(): Observable<Persona[]> {
     return this.httpClient.get<Persona[]>(this.url + 'lista');

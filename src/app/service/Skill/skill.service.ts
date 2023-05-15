@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Skill } from 'src/app/model/Entidades/Skill/skill';
-import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -10,17 +9,11 @@ import { environment } from 'src/environments/environment';
 })
 export class SkillService {
 
-  url: string;
+  // url='https://backendram3.onrender.com/skill/'
+  url='http://localhosto:8080/skill/'
 
 
-
-  constructor(private httpClient: HttpClient) {
-    
-      if (environment.production) {
-        this.url = 'https://backendram3.onrender.com/skill/';
-      } else {
-        this.url = 'http://localhost:8080/skill/';
-      }
+  constructor(private httpClient: HttpClient) {  
     }
   
    
