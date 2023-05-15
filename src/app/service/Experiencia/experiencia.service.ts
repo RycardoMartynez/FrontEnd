@@ -10,8 +10,8 @@ export class ExperienciaService {
   
 
   
-  // url='https://backendram3.onrender.com/experiencia/'
-  url='http://localhost:8080/experiencia/'
+  url='https://backendram3.onrender.com/experiencia/'
+  // url='http://localhost:8080/experiencia/'
 
   constructor(private httpClient: HttpClient) {}
 

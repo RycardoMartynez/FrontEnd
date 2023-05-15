@@ -10,8 +10,8 @@ export class ProyectoService {
 
   
   
-  // url='https://backendram3.onrender.com/proyecto/'
-  url='http://localhost:8080/proyecto/'
+  url='https://backendram3.onrender.com/proyecto/'
+  // url='http://localhost:8080/proyecto/'
 
   constructor(private httpClient: HttpClient) { 
 

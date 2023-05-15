@@ -9,8 +9,8 @@ import { Usuario } from 'src/app/model/Entidades/Usuario/usuario';
 })
 export class UsuarioService {
 
-  //url='https://backendram3.onrender.com/usuario/'
-  url='http://localhost:8080/usuario/'
+  url='https://backendram3.onrender.com/usuario/'
+  // url='http://localhost:8080/usuario/'
  
 
 
@@ -21,9 +21,9 @@ export class UsuarioService {
 
   
 
-  public verUsuario(id: number): Observable<Usuario> {
-    return this.httpClient.get<Usuario>(this.url + `ver/${id}`);
-  }
+  // public verUsuario(id: number): Observable<Usuario> {
+  //   return this.httpClient.get<Usuario>(this.url + `ver/${id}`);
+  // }
 
   public login(nombreU: string, password: string): Observable<boolean> {
     const loginData = {
