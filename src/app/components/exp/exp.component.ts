@@ -31,7 +31,7 @@ export class ExpComponent implements OnInit {
     cargarExperiencia(): void {
       this.expeServi.lista().subscribe({
         next: (data) => {
-          this.expe = data;
+          this.expe = data.reverse();
         },
         error: (error) => {
           console.error('Error al cargar las experiencias', error);

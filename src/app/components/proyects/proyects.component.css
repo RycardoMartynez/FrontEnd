@@ -1,0 +1,13 @@
+
+h2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #2d8cd1;
+    padding-bottom: 35px;
+    padding-top: 35px;
+    margin-top: 35px;
+    color: #fff;
+}

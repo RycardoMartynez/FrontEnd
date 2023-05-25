@@ -25,7 +25,7 @@ export class SkillsComponent implements OnInit {
     }
 
     cargarSkill(): void{
-        this.skillServi.lista().subscribe(data=>{this.skill=data;}); 
+        this.skillServi.lista().subscribe(data=>{this.skill=data.reverse();}); 
     }
     editarTarjeta(tarjetaId: number): void {
         if (!this.tarjetaEnEdicion(tarjetaId)) {

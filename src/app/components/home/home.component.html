@@ -1,5 +1,8 @@
+<app-loader *ngIf="loaderService.getLoaderState() | async"></app-loader>
+<app-nav></app-nav>
 <app-header></app-header>
 <app-acerca-de></app-acerca-de>
+<app-tarj-servicios></app-tarj-servicios>
 <app-exp></app-exp>
 <app-edu></app-edu>
 <app-skills></app-skills>

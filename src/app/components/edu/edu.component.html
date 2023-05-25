@@ -1,11 +1,15 @@
 <link rel="stylesheet" href="edu.component.css">
 
+
+
+<div class="titulo"><h2 id="cursos"> Cursos de Formacion </h2></div>
+     
 <br>
 <div class="container">
   <div class="row d-flex justify-content-center align-items-center align-items-stretch">
     <div class="col-12 text-center">
      
-        <h2 id="cursos"> Cursos </h2>
+        
      
       <button (click)="mostrarFormulario()" class="btn btn-dark"*ngIf="!mostrarForm && loginIN"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 20 20">
         <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
@@ -59,7 +63,7 @@
 
 <div class="container">
   <div class="row d-flex justify-content-center align-items-center align-items-stretch">
-    <div class="col-md-4" *ngFor="let curso of cur.reverse()">
+    <div class="col-md-4" *ngFor="let curso of cur">
       <div class="card text-center h-100">
         <div class="card-header">
           <button *ngIf="!tarjetaEnEdicion(curso.id) && loginIN" (click)="editarTarjeta(curso.id)" class="btn btn-dark">

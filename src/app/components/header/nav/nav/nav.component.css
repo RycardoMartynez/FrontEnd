@@ -1,0 +1,62 @@
+
+h2{
+    color: #fff;
+    /* background: linear-gradient(90deg, #ffffff, #1ec6fe); */
+    font-weight: 400;
+    /* -webkit-text-fill-color: transparent; */
+    /* -webkit-background-clip: text; */
+    transform: skewX(-15deg);
+}
+
+.navbar{
+    background: #067cbc;
+}
+.offcanvas{
+    color: #fff;
+}
+
+nav div a{
+    color: #fff;
+    font-weight: 600;
+}
+
+.navbar-toggler{
+    color: #fff;
+}
+.navbar-toggler-icon{
+    color: #fff;
+}
+
+.offcanvas{
+    background: #09a2f4;
+}
+
+
+button{
+    background: #067cbc;
+    color: #fff;
+    border: none;
+}
+
+div div button{
+    background: #09a2f4;
+}
+div div button:hover{
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 100%;
+}
+a:hover{
+    background-color: rgba(0, 0, 0, .2);
+    animation: ease-in-out 0.8s infinite ;
+
+}
+button:hover{
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 100%;
+
+}
+div h5 button{
+    color: #fff;
+    font-weight: 600;
+
+}

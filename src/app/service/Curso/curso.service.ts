@@ -8,7 +8,7 @@ import { Curso } from 'src/app/model/Entidades/Curso/curso';
 })
 export class CursoService {
 
-  
+  // url='https://ryckdev.azurewebsites.net/curso/';
   url='https://backendram3.onrender.com/curso/'
   // url='http://localhost:8080/curso/'
 

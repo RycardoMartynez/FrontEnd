@@ -9,7 +9,7 @@ import { Experiencia } from 'src/app/model/Entidades/Experiencia/experiencia';
 export class ExperienciaService {
   
 
-  
+  // url='https://ryckdev.azurewebsites.net/experiencia/';
   url='https://backendram3.onrender.com/experiencia/'
   // url='http://localhost:8080/experiencia/'
 

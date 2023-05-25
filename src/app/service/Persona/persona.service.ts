@@ -8,9 +8,10 @@ import { Persona } from 'src/app/model/Entidades/Persona/persona';
 })
 export class PersonaService {
 
-  
+  // url='https://ryckdev.azurewebsites.net/persona/';
+   url='https://backendram3.onrender.com/persona/'
   // url='http://localhost:8080/persona/'
-  url='https://backendram3.onrender.com/persona/'
+ 
 
   constructor(private httpClient: HttpClient) {}
 

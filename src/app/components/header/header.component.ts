@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   nombreU: string = "";
   contrasena: string = "";
   mostrarForm: boolean = false;
+ 
 
   constructor(private persoService: PersonaService, private usuarioService: UsuarioService, private pageScrollService: PageScrollService) { }
 
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit {
     });
  
   }
+
 
   logout(): void {
     this.loginIN = false;
@@ -63,12 +65,20 @@ export class HeaderComponent implements OnInit {
  cerrarFormulario(): void {
   this.mostrarForm = false;
 }
+// scrollToSection(sectionId: string, event: Event) {
+//   event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+//   this.pageScrollService.scroll({
+//     document: document,
+//     scrollTarget: `#${sectionId}`,
+//   });
+// }
 scrollToSection(sectionId: string, event: Event) {
   event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
-  this.pageScrollService.scroll({
-    document: document,
-    scrollTarget: `#${sectionId}`,
-  });
+
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 

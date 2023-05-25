@@ -26,7 +26,7 @@ export class ProyectsComponent implements OnInit {
     }
 
     cargarProyecto(): void{
-        this.proyeServi.lista().subscribe(data=>{this.proyecto=data;}); 
+        this.proyeServi.lista().subscribe(data=>{this.proyecto=data.reverse();}); 
     }
     editarTarjeta(tarjetaId: number): void {
         if (!this.tarjetaEnEdicion(tarjetaId)) {

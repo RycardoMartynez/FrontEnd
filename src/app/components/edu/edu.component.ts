@@ -39,7 +39,7 @@ export class EduComponent implements OnInit {
 
 
   cargarCurso(): void {
-    this.curServi.lista().subscribe(data => {this.cur = data;});
+    this.curServi.lista().subscribe(data => {this.cur = data.reverse();});
   }
 
   editarTarjeta(cursoId: number): void {

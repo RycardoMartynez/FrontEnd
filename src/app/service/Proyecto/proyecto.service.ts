@@ -9,7 +9,7 @@ import { Proyecto } from 'src/app/model/Entidades/Proyecto/proyecto';
 export class ProyectoService {
 
   
-  
+  // url='https://ryckdev.azurewebsites.net/proyecto/';
   url='https://backendram3.onrender.com/proyecto/'
   // url='http://localhost:8080/proyecto/'
 
